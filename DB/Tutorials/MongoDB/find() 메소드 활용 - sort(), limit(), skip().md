@@ -1,0 +1,83 @@
+find() 메소드를 더욱 더 활용하기 위해 필요한 sort(), limit(), skip() 메소드에 대해 설명. 그냥 find() 메소드를 사용하면 criteria 에 일치하는 모든 document 들을 출력해주기 때문에,  예를들어 페이지 같은 기능을 사용한다면 불적합하겠죠. 그렇다고 find() 메소드 자체에 어디부터 어디까지 불러오겠다 라고 설정하는 매개변수는 따로 없습니다.
+
+find() 메소드를 사용했을 시 cursor 형태의 결과값을 반환하는데, 이 객체가 가지고 있는 limit() 메소드와 skip() 메소드를 통하여 보이는 출력물의 갯수를 제한 할 수 있고, sort() 메소드를 사용하여 데이터를 순서대로 나열 할 수 있습니다.
+
+<br/>
+
+> # 샘플 데이터
+쿼리 연습을 해보기 위한 샘플데이터 추가.
+<pre><code>[
+    { "_id": 1, "item": { "category": "cake", "type": "chiffon" }, "amount": 10 },
+    { "_id": 2, "item": { "category": "cookies", "type": "chocolate chip" }, "amount": 50 },
+    { "_id": 3, "item": { "category": "cookies", "type": "chocolate chip" }, "amount": 15 },
+    { "_id": 4, "item": { "category": "cake", "type": "lemon" }, "amount": 30 },
+    { "_id": 5, "item": { "category": "cake", "type": "carrot" }, "amount": 20 },
+    { "_id": 6, "item": { "category": "brownies", "type": "blondie" }, "amount": 10 }
+]</code></pre>
+<br/>
+<pre><code>> use mongodb_tutorial
+switched to db mongodb_tutorial
+> db.orders.insert(
+    .... SAMPLE DATA
+)
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 6,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})</code></pre>
+<br/>
+
+> # cusor.sort(DOCUMENT)
+이 메소드는 __데이터 정렬__ 할때 사용된다. 매개변수로는 어떤 KEY를 사용하여 정렬할지 알려주는 <br/>
+document를 전달합니다.
+<br/>
+이 document의 구조는 다음과 같다.
+<pre><code>{ KEY: value }</code></pre>
+<br/>
+KEY 는 데이터의 field 이름이고, value 의 값은 1 혹은 -1 입니다. 이 값을 1로 설정하면 오름차순으로, -1로 하면 내림차순으로 정렬합니다.
+<br/>
+또한 여러 KEY를 입력 할 수 있고 먼저 입력한 KEY가 우선권을 갖습니다.
+__예제1:__ id의 값을 사용하여 오름차순으로 정렬하기
+<pre><code>> db.orders.find().sort( { "_id": 1 } )
+{ "_id" : 1, "item" : { "category" : "cake", "type" : "chiffon" }, "amount" : 10 }
+{ "_id" : 2, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 50 }
+{ "_id" : 3, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 15 }
+{ "_id" : 4, "item" : { "category" : "cake", "type" : "lemon" }, "amount" : 30 }
+{ "_id" : 5, "item" : { "category" : "cake", "type" : "carrot" }, "amount" : 20 }
+{ "_id" : 6, "item" : { "category" : "brownies", "type" : "blondie" }, "amount" : 10 }</code></pre>
+<br/>
+__예제2:__ amount 값을 사용하여 오름차순으로 정렬하고, 정렬한 값에서 id 값은 내림차순으로 정렬하기.
+<pre><code>> db.orders.find().sort( { "amount": 1, "_id": -1 } )
+{ "_id" : 6, "item" : { "category" : "brownies", "type" : "blondie" }, "amount" : 10 }
+{ "_id" : 1, "item" : { "category" : "cake", "type" : "chiffon" }, "amount" : 10 }
+{ "_id" : 3, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 15 }
+{ "_id" : 5, "item" : { "category" : "cake", "type" : "carrot" }, "amount" : 20 }
+{ "_id" : 4, "item" : { "category" : "cake", "type" : "lemon" }, "amount" : 30 }
+{ "_id" : 2, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 50 }</code></pre>
+<br/>
+
+> # _cusor.limit(value)_
+이 메소드는 출력할 데이터 갯수를 제할할 때 사용된다. value 파라미터는 출력할 갯수 값이다.
+__예제3:__ 출력 할 갯수를 3개로 제한.
+<pre><code>> db.orders.find().limit(3)
+{ "_id" : 1, "item" : { "category" : "cake", "type" : "chiffon" }, "amount" : 10 }
+{ "_id" : 2, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 50 }
+{ "_id" : 3, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 15 }</code></pre>
+<br/>
+<br/>
+> # _cusor.skip(value)_
+이 메소드는 출력 할 데이터의 __시작부분을 설정__ 할 때 사용된다. value값 갯수의 데이터를 생략하고 그 다음부터 출력한다.
+__예제4:__ 2개의 데이터를 생략하고 그 다음부터 출력
+<pre><code>> db.orders.find().skip(2)
+{ "_id" : 3, "item" : { "category" : "cookies", "type" : "chocolate chip" }, "amount" : 15 }
+{ "_id" : 4, "item" : { "category" : "cake", "type" : "lemon" }, "amount" : 30 }
+{ "_id" : 5, "item" : { "category" : "cake", "type" : "carrot" }, "amount" : 20 }
+{ "_id" : 6, "item" : { "category" : "brownies", "type" : "blondie" }, "amount" : 10 }</code></pre>
+<br/>
+
+
