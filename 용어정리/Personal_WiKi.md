@@ -13,4 +13,10 @@ Application Programming Interface의 약자 API는 한 프로그램이 다른 �
 UI (User Interface)와 비교하면 이해가 편함.</br>
 UI는 일반 사용자는 버튼이나 링크, 이미지등 특정 UI를 통해 조작함으로써 시스템을 제어한다.</br>
 API는 개발자가 특정 프로그램에서 제공하는 규격을 이용하여 응용프로그램을 제어하고 구축한다. 
+
 ![image](https://user-images.githubusercontent.com/91245647/143392250-faeaaf96-1802-4ca8-a489-eb312a3b36b9.png)
+
+# labeling
+AI 기술이 발달하면서 AI 서비스에 대한 수요가 많아지고 있습니다. AI 서비스를 개발하는 과정에는 수많은 작업이 필요합니다. 예를 들면, 학습을 위한 정답지를 만들고, 학습 효율성이 높은 모델을 찾아야 하는 작업이 있습니다. 전체 작업 중 한 과정이라도 소홀히 진행한다면 AI 기술의 성능을 기대할 수 없기 때문에, 연구자와 개발자는 수작업으로 진행하는 경우가 많습니다. 여러 과정 중에서 가장 기본적이면서 노동력을 집중하는 작업은 단연 데이터에 대한 정답지를 만드는 레이블링입니다.
+
+![image](https://user-images.githubusercontent.com/91245647/143392980-aeeb3aa7-ea45-44b3-b0b3-efd8f33f1fd9.png)
