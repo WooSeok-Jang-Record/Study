@@ -33,6 +33,8 @@ def hello():
 
 if __name__ == "__main__":
     app.run()</code></pre>
+ ![image](https://user-images.githubusercontent.com/91245647/143529350-aa3a92eb-d40a-4c3c-9ddb-c720a7c0de20.png)
+
     
  # 웹 프레임워크 
  __웹 프레임워크(web framework, WF)__ 또는 __웹 애플리케이션 프레임워크(web application framework, WAF)__ 는 동적인 웹 페이지나, 웹 애플리케이션, 웹 서비스 개발 보조용으로 만들어지는 __애플리케이션 프레임워크__ 의 일종이다. 웹 페이지를 개발하는 과정에서 겪는 어려움을 줄이는 것이 주 목적으로 통상 __데이터베이스 연동, 템플릿 형태의 표준, 세션 관리, 코드 재사용__ 등의 기능을 포함하고 있다.
