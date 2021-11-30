@@ -1,5 +1,7 @@
 # [MQTT] mosquitto - python 테스트
-
+## 참고
+[https://nagy.tistory.com/6]
+[https://souk0721.github.io/studynote/2018/07/11/mqtt-python-test-01.html]
 ### 설치
 - Ubuntu 서버에 MQTT broker(mosquitto)가 서비스 되어 있다는 전제하여 Python으로 테스트를 진행함.
 - python MQTT 라이브러리 설치
