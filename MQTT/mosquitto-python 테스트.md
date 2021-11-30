@@ -58,13 +58,11 @@ client.connect("test.mosquitto.org") # - 서버 IP '테스트를 위해 test.mos
 client.loop_forever()
 ```
 </br>
-<mark>sub.py</mark> 를 만들어 위의 코드를 삽입하고 ==python sub.py== 를 실행하고 pub.py 를 만들어 python pub.py 를 실행하면, sub.py 를 실행한 커맨드 창에 아애와 같이 나온다.
+
+sub.py 를 만들어 위의 코드를 삽입하고 python sub.py 를 실행하고 pub.py 를 만들어 python pub.py 를 실행하면, sub.py 를 실행한 커맨드 창에 아애와 같이 나온다.
 
 ```python
 /seoul/yuokok multiple 2
 /seoul/yuokok multiple 1
 ```
-</br>
-== test ==
-</br>
-<mark>highlight</mark>
+
