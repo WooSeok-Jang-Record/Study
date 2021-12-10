@@ -4,6 +4,7 @@
 
 ## Pipeline 구축 (ESP32 -> MQTT -> Airflow-DAG -> DB & Dash)
 - Airflow-DAG 참고 링크 : [https://dodonam.tistory.com/156]</br>
+- Dash 사용법 참조 링크 : [https://antilibrary.org/2348]</br>
 
 - ESP32-MQTT-AirflowDAG-Plotly-Dash (온/습도 데이터)
 ```python
